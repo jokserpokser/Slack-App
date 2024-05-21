@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import logo from './assets/slack-logo.png';
 import './App.css';
+import Login from "./components/Authentication/Login"
+import Signup from './components/Authentication/Signup';
+import { useState } from 'react';
 
 function App() {
+  const [ display, setDisplay ]  = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <img src={logo} alt="Slack" className="logo-img" />
+      </div>
+      {display ? <Login setDisplay={setDisplay} /> : <Signup setDisplay={setDisplay} />}
     </div>
   );
 }
