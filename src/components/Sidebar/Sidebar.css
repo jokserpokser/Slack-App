@@ -1,0 +1,52 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+.sidebar-container{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(27, 27, 27);
+    height: 100%;
+    width: 5rem;
+    color: rgb(68, 10, 116);
+    font-size: 2.5rem;
+}
+
+.pressed{
+    background-color: rgb(68, 10, 116);
+}
+
+.navbar-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    background-color: transparent;
+    color: whitesmoke;
+    border: hidden;
+    width: 100%;
+    padding-block: 1rem;
+    text-decoration: none;
+    margin-top: 1.5rem;
+
+}
+
+.navbar-item:hover{
+    background-color: rgb(15,15,15);
+}
+
+.navbar-item span {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+}
+
+.profile {
+    position: absolute;
+    bottom: 0;
+}

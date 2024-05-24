@@ -1,0 +1,11 @@
+.sidebar2-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(15, 15, 15);
+    height: 100%;
+    width: 23rem;
+    margin-left: 28rem;
+    color: whitesmoke;
+    font-size: 1.5rem;
+}

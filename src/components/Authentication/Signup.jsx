@@ -1,9 +1,12 @@
 import React from "react";
 import "./Login.css";
+import logo from '../../assets/slack-logo.png';
 
 export default function Signup({setDisplay}) {
   return (
+    
     <div className="main-container">
+      <img src={logo} alt="Slack" className="logo-img" />
       <div className="login-form">
         <h1>Create an Account</h1>
         <p className="header2">Create an account and start using Slack now!</p>
@@ -24,7 +27,7 @@ export default function Signup({setDisplay}) {
         </form>
         <button
           className="changeDisplayLogin-btn"
-          onClick={() => setDisplay(true)}
+          onClick={() => setDisplay('login')}
         >
           Already have an account? Login!
         </button>

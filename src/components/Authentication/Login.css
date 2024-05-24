@@ -9,10 +9,6 @@
   transition-duration: 0.3s;
 }
 
-body {
-  background-color: rgb(245, 227, 255);
-}
-
 h1 {
   font-weight: 700;
   font-size: 2.7rem;
@@ -79,14 +75,14 @@ input[type="email"]:focus  {
   padding-block: 0.6rem;
   border-radius: 0.7rem;
   border: hidden;
-  background-color: rgb(132, 17, 225);
+  background-color: rgb(29, 29, 29);
   font-size: large;
   color: white
 }
 
 .login-btn:hover {
     cursor: pointer;
-    background-color: rgb(177, 117, 247);
+    background-color: rgb(50, 50, 50);
     transition-duration: 0.2s;
 }
 
