@@ -14,9 +14,9 @@ export default function Login({ setDisplay }) {
     );
 
     useEffect(() => {
-        if (user) {
-            localStorage.setItem("user", JSON.stringify(user));
-        }
+        // if (user) {
+        //     localStorage.setItem("user", JSON.stringify(user));
+        // }
     }, [user]);
 
     const Navigate = useNavigate();
@@ -43,14 +43,17 @@ export default function Login({ setDisplay }) {
                 const client = headers.client;
                 const expiry = headers.expiry;
                 const uid = headers.uid;
-
-                setUser({
+                
+                const necessaryData = {
                     accessToken,
                     client,
                     expiry,
                     uid,
                     id: data.data.id,
-                });
+                };
+                setUser( necessaryData );
+
+                localStorage.setItem("user", JSON.stringify(necessaryData));
 
                 Navigate("/dashboard");
             }

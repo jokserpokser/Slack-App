@@ -1,11 +1,49 @@
+.sidebar2-container h1 {
+    position: fixed;
+    width: 350px;
+    padding: 0.5rem;
+    font-size: 2rem;
+    background-color: rgb(27, 27, 27);
+}
+
 .sidebar2-container{
     position: fixed;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
     background-color: rgb(15, 15, 15);
     height: 100%;
     width: 23rem;
     margin-left: 28rem;
     color: whitesmoke;
     font-size: 1.5rem;
+    overflow-y: scroll;
+}
+
+.userList-container{
+    margin-top: 2.5em;
+}
+
+.userList-container p {
+    text-align: left;
+}
+
+.userItem {
+    padding: 1rem;
+    margin-inline: 1rem;
+    margin-block: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    text-align: left;
+    background-color: rgb(25, 25, 25);
+}
+
+.userItem:hover {
+    background-color: rgb(36, 36, 36);
+    margin-inline: 0.5rem;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
 }
