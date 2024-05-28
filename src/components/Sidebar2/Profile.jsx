@@ -4,9 +4,7 @@ import "./Sidebar2.css";
 export default function Profile() {
     const user = JSON.parse(localStorage.getItem("user"));
     const { uid, id } = user;
-    useEffect(() => {
-        console.log(user);
-    });
+    
     return (
         <div className="sidebar2-container">
             <h1>Profile</h1>

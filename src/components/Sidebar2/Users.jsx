@@ -28,7 +28,7 @@ export default function Users() {
                     const { email, id } = person;
                     return (
                         <p className="userItem" key={id}>
-                            {email}
+                            <i className="fa-solid fa-user"></i>{email}
                         </p>
                     );
                 })}

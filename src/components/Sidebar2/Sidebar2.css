@@ -1,10 +1,4 @@
-.sidebar2-container h1 {
-    position: fixed;
-    width: 350px;
-    padding: 0.5rem;
-    font-size: 2rem;
-    background-color: rgb(27, 27, 27);
-}
+
 
 .sidebar2-container{
     position: fixed;
@@ -20,12 +14,24 @@
     overflow-y: scroll;
 }
 
+.sidebar2-container h1 {
+    position: fixed;
+    width: 350px;
+    padding: 0.5rem;
+    font-size: 2rem;
+    background-color: rgb(27, 27, 27);
+}
+
 .userList-container{
     margin-top: 2.5em;
 }
 
 .userList-container p {
     text-align: left;
+}
+
+.userList-container i {
+    padding-right: 0.7rem;
 }
 
 .userItem {
