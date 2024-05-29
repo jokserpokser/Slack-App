@@ -6,10 +6,12 @@ import Channels from "../components/Sidebar2/Channels";
 import Messages from "../components/Sidebar2/Messages";
 import Users from "../components/Sidebar2/Users";
 import Profile from "../components/Sidebar2/Profile";
+import Header from "../components/Header/Header";
 
 export default function Dashboard() {
   return (
     <div>
+      <Header />
       <Routes>
         <Route path="/" element={<Sidebar />}>
           <Route index element={<Users />}></Route>
