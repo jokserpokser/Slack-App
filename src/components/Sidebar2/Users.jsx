@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function Users() {
     const [userList, setUserList] = useState([]);
+    const [userListLoading, setUserListLoading] = useState(true);
 
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -12,19 +13,30 @@ export default function Users() {
         // console.log('Users', user);
         // console.log(user.accessToken)
         async function fetchUsers() {
-            const users = await UserService.getUsers(user);
-            setUserList(users);
+            try {
+                const users = await UserService.getUsers(user);
+                setUserList(users);
+            } catch (error) {
+                console.error("Failed to fetch users:", error);
+            } finally {
+                setUserListLoading(false);
+            }
         }
+
         if (userList.length === 0) {
             fetchUsers();
         }
-    }, [user]);
+    });
 
     return (
         <div className="sidebar2-container">
             <h1>Users</h1>
             <div className="userList-container">
-                {userList.map((person) => {
+                { userListLoading && (
+                    <span className="loading">Loading...</span>
+                )}
+
+                { !userListLoading && userList.map((person) => {
                     const { email, id } = person;
                     return (
                         <p className="userItem" key={id}>

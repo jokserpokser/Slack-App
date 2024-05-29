@@ -1,13 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
+
 import Sidebar from "../components/Sidebar/Sidebar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Channels from "../components/Sidebar2/Channels";
 import Messages from "../components/Sidebar2/Messages";
 import Users from "../components/Sidebar2/Users";
 import Profile from "../components/Sidebar2/Profile";
 
 export default function Dashboard() {
+  const Navigate = useNavigate();
+
+  useEffect(() => {
+    const status = localStorage.getItem("isLoggedIn");
+    console.log(status)
+    if (status !== "true") {
+      alert("Please Login to continue.");
+      localStorage.clear();
+      Navigate('/');
+    }
+  })
+
   return (
     <div>
       <Routes>
