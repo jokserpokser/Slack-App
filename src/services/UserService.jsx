@@ -1,3 +1,4 @@
+
 import { API_URL } from "../constants/Constants";
 import axios from "axios";
 
@@ -36,7 +37,8 @@ const UserService = {
                 return alert(error.response.data.errors);
             }
         }
-    }
+    },
+   
 }
 
 export default UserService;
