@@ -13,7 +13,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     const status = localStorage.getItem("isLoggedIn");
-    console.log(status)
     if (status !== "true") {
       alert("Please Login to continue.");
       localStorage.clear();

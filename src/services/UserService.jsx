@@ -19,6 +19,23 @@ const UserService = {
                 alert(error.response.data.errors);
             }
         }
+    },
+
+    signUp: async function (info) {
+        if (info.password !== info.password_confirmation){
+            return alert ("Passwords do not match!");
+        }
+        try {
+            const response = await axios.post(`${API_URL}/auth/`, info);
+            const { data } = response;
+            if (data.data) {
+                return alert("Account Creation Successful!");
+            }
+        } catch (error) {
+            if (error.response.data.errors){
+                return alert(error.response.data.errors);
+            }
+        }
     }
 }
 
