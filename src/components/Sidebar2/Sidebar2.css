@@ -19,10 +19,12 @@
     padding: 0.5rem;
     font-size: 2rem;
     background-color: rgb(27, 27, 27);
+    margin-top: 2rem;
+    z-index: 100;
 }
 
 .userList-container, .profile-container{
-    margin-top: 65px;
+    margin-top: 100px;
 }
 
 .profile-container {
