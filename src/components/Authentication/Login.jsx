@@ -9,9 +9,6 @@ export default function Login({ setDisplay }) {
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
 
-   const [user, setUser] = useState(() =>
-      JSON.parse(localStorage.getItem("user"))
-   );
 
    const Navigate = useNavigate();
    const handleLogin = async (event) => {
@@ -45,7 +42,6 @@ export default function Login({ setDisplay }) {
                uid,
                id: data.data.id,
             };
-            setUser(necessaryData);
 
             localStorage.setItem("user", JSON.stringify(necessaryData));
             localStorage.setItem("isLoggedIn", "true");

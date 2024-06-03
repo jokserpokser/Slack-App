@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./Sidebar2.css";
 
 export default function Profile() {

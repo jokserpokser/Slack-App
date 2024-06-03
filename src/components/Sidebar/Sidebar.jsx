@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Sidebar.css";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 

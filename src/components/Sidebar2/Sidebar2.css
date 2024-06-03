@@ -1,4 +1,8 @@
 
+.displayNone{
+    display: none;
+}
+
 .sidebar2-container{
     position: fixed;
     display: flex;
@@ -25,6 +29,56 @@
 
 .userList-container, .profile-container{
     margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userList-container input[type="text"]{
+    background-color: rgb(68, 68, 68);
+    width: 20rem;
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+
+.userList-container label {
+    text-align: center;
+    width: 100%;
+
+}
+
+.searchList-container{
+    background-color: rgb(55, 55, 55);
+    margin-top: 0;
+    width: 20rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    z-index: 120;
+    max-height: 15rem;
+    overflow-y: scroll;
+}
+
+.searchList-container p{
+    text-align: center !important;
+    padding: 0.5rem
+}
+
+.searchList-container button:hover{
+    background-color: rgb(85, 85, 85);
+    cursor:default;
+}
+
+.searchUser-item {
+    text-decoration: none;
+    width: 100%;
+    background-color: transparent;
+    border: hidden;
+    color: whitesmoke;
+    font-size: 1.2rem;
 }
 
 .profile-container {
@@ -50,11 +104,12 @@
     font-size: 1rem;
     text-align: left;
     background-color: rgb(25, 25, 25);
+    width: 85%;
 }
 
 .userItem:hover {
     background-color: rgb(36, 36, 36);
-    margin-inline: 0.5rem;
+    width: 87%;
 }
 
 .logout {

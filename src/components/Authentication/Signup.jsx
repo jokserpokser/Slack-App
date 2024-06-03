@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/slack-logo.png";
 import UserService from "../../services/UserService";
-import { useNavigate } from "react-router";
+
 
 export default function Signup({ setDisplay }) {
    const [email, setEmail] = useState();
    const [password, setPassword] = useState();
    const [password_confirmation, setPasswordConfirmation] = useState();
-
-   const Navigate = useNavigate();
 
    const handleSignup = async (event) => {
       event.preventDefault();
