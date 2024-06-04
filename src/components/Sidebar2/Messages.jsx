@@ -93,7 +93,7 @@ export default function Messages() {
                         return indiv.email
                            .toLowerCase()
                            .includes(searchedUser.toLowerCase());
-                     }) === "" && (
+                     }) == "" && (
                         <p style={{ color: `whitesmoke` }}>No matches</p>
                      )}
                </div>
