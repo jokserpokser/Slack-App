@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar } from '@mui/material';
+// import { Avatar } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { HelpOutline } from '@mui/icons-material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -9,7 +9,7 @@ function Header() {
   return (
     <HeaderContainer>
         <HeaderLeft>
-            <HeaderAvatar />
+            {/* <HeaderAvatar /> */}
             <AccessTimeIcon />
         </HeaderLeft>
         <HeaderSearch>
@@ -62,10 +62,10 @@ const HeaderContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    /* padding: 3px 0; */
+    padding: 5px 0;
     background-color: rgb(27, 27, 27);
     color: white;
-    position: relative;
+    position: fixed;
 `;
 
 
@@ -78,10 +78,10 @@ const HeaderLeft = styled.div`
     padding-right: 20px;
 `;
 
-const HeaderAvatar = styled(Avatar)`
-    cursor: pointer;
+// const HeaderAvatar = styled(Avatar)`
+//     cursor: pointer;
 
-    :hover {
-        opacity: 0.8;
-    }
-`;
+//     :hover {
+//         opacity: 0.8;
+//     }
+// `;

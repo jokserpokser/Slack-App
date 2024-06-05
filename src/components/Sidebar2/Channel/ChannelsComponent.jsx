@@ -10,6 +10,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useDispatch } from 'react-redux';
+import { selectChannel, fetchMessages } from '../../../redux/chatSlice';
 
 function ChannelsComponent() {
     const status = localStorage.getItem("isLoggedIn");
@@ -19,19 +21,25 @@ function ChannelsComponent() {
     const [open, setOpen] = useState(false);
     const [channelName, setChannelName] = useState('');
     const [channels, setChannels] = useState([]);
+    const [channelFlag, setChannelFlag] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchChannels = async () => {
-            const data = await ChannelService.getChannels(user);
-            if (Array.isArray(data)) {
-                setChannels(data);
-            } else {
-                setChannels([]);
+            if (channelFlag) {
+                const data = await ChannelService.getChannels(user);
+                if (Array.isArray(data)) {
+                    setChannels(data);
+                } else {
+                    setChannels([]);
+                }
+                setChannelFlag(false);
             }
+        
         };
 
         fetchChannels();
-    }, [user]);
+    }, [channelFlag, user]);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -51,6 +59,16 @@ function ChannelsComponent() {
         } else {
             console.error('Failed to create channel');
         }
+    };
+
+    const handleCancel = () => {
+        handleClose();
+        return(handleCancel);
+    };
+
+    const handleChannelSelect = (channel) => {
+        dispatch(selectChannel(channel));
+        dispatch(fetchMessages(channel.id));
     };
 
     return (
@@ -73,7 +91,7 @@ function ChannelsComponent() {
             <ChannelOptions Icon={AddIcon} title="Add Channel" onClick={handleOpen} />
 
             {Array.isArray(channels) && channels.map((channel) => (
-                <ChannelOptions key={channel.id} title={channel.name} />
+                <ChannelOptions key={channel.id} title={channel.name} onClick={() => handleChannelSelect(channel)} />
             ))}
             
             <Modal open={open} onClose={handleClose}>
@@ -87,6 +105,9 @@ function ChannelsComponent() {
                     />
                     <Button variant="contained" color="primary" onClick={handleCreateChannel}>
                         Create
+                    </Button>
+                    <Button onClick={handleCancel}>
+                        Cancel
                     </Button>
                 </ModalBox>
             </Modal>

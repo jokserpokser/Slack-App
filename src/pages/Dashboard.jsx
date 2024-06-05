@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Channels from "../components/Sidebar2/Channels";
@@ -7,6 +6,7 @@ import Messages from "../components/Sidebar2/Messages";
 import Users from "../components/Sidebar2/Users";
 import Profile from "../components/Sidebar2/Profile";
 import Header from "../components/Header/Header";
+import Chat from "../components/Chat/Chat"
 
 export default function Dashboard() {
   const Navigate = useNavigate();
@@ -32,6 +32,7 @@ export default function Dashboard() {
           <Route path="profile" element={<Profile />}></Route>
         </Route>
       </Routes>
+      <Chat />
     </div>
   );
 }

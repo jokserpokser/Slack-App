@@ -37,13 +37,11 @@ const ChannelOptionContainer = styled.div`
     }
 `;
 
-const ChannelOptionBox = styled.div`
+const ChannelOptionBox = styled.h3`
     display: flex;
     font-size: 15px;
     align-items: center;
-    padding: 5px;
-    span {
-        margin-right: 10px;
-        margin-left: 10px;
-    }
+    font-weight: 400;
+    padding: 10px 0;
+    
 `;

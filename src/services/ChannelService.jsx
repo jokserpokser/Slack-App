@@ -36,7 +36,7 @@ const ChannelService = {
                 uid: user.uid
             };
             const response = await axios.get(`${API_URL}/channels`, { headers });
-            return response.data.data; // Adjust based on your actual response structure
+            return response.data.data; 
         } catch (error) {
             console.error("Cannot get channels:", error);
             if (error.response && error.response.data && error.response.data.errors) {
