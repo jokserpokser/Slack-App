@@ -59,6 +59,7 @@ function ChannelsComponent() {
         } else {
             console.error('Failed to create channel');
         }
+        setChannelFlag(true);
     };
 
     const handleCancel = () => {
@@ -90,8 +91,8 @@ function ChannelsComponent() {
             <hr />
             <ChannelOptions Icon={AddIcon} title="Add Channel" onClick={handleOpen} />
 
-            {Array.isArray(channels) && channels.map((channel) => (
-                <ChannelOptions key={channel.id} title={channel.name} onClick={() => handleChannelSelect(channel)} />
+            {Array.isArray(channels) && channels.map((channel, index) => (
+                <ChannelOptions key={index} title={channel.name} onClick={() => handleChannelSelect(channel)} />
             ))}
             
             <Modal open={open} onClose={handleClose}>

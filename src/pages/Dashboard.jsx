@@ -32,7 +32,7 @@ export default function Dashboard() {
           <Route path="profile" element={<Profile />}></Route>
         </Route>
       </Routes>
-      <Chat />
+      
     </div>
   );
 }

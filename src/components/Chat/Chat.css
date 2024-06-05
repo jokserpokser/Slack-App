@@ -4,10 +4,12 @@
     background-color: #f4f4f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-left: 28rem;
+    margin-left: 23rem;
     height: 100%;
     position: fixed;
     z-index: -1;
+    width: 73%;
+    color: black;
 }
   
 .chat-box {
@@ -17,7 +19,7 @@
     padding: 10px;
     background-color: #fff;
     margin-bottom: 10px;
-    width: 1410px;
+    /* width: 1410px; */
 }
   
 .chat-input {
