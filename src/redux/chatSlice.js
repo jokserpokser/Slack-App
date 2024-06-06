@@ -3,8 +3,9 @@ import ChatService from '../services/ChatService';
 
 export const fetchMessages = createAsyncThunk(
   'chat/fetchMessages',
-  async (channelId, { getState }) => {
+  async (channelId) => {
     const user = JSON.parse(localStorage.getItem("user"));
+
     const response = await ChatService.fetchMessages(user, channelId);
     return response;
   }
