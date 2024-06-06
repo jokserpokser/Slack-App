@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Sidebar2.css";
 import UserService from "../../services/UserService";
-import { SearchCategory } from "semantic-ui-react";
 
 export default function Messages() {
    const [searchedUser, setSearchedUser] = useState("");
@@ -137,7 +136,7 @@ export default function Messages() {
                            return indiv.email
                               .toLowerCase()
                               .includes(searchedUser.toLowerCase());
-                        }) === "" && (
+                        }) == "" && (
                            <p style={{ color: `whitesmoke` }}>No matches</p>
                         )}
                   </div>
