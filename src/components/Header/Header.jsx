@@ -66,6 +66,7 @@ const HeaderContainer = styled.div`
     background-color: rgb(27, 27, 27);
     color: white;
     position: fixed;
+    z-index: 9999;
 `;
 
 
