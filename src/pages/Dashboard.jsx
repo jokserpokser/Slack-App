@@ -6,7 +6,7 @@ import Messages from "../components/Sidebar2/Messages";
 import Users from "../components/Sidebar2/Users";
 import Profile from "../components/Sidebar2/Profile";
 import Header from "../components/Header/Header";
-import Chat from "../components/Chat/Chat"
+// import Chat from "../components/Chat/Chat"
 
 export default function Dashboard() {
   const Navigate = useNavigate();

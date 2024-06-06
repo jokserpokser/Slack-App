@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMessages } from "../../redux/chatSlice";
-import AddIcon from "@mui/icons-material/Add";
 import "./Chat.css";
 import ChatService from "../../services/ChatService";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import MailIcon from '@mui/icons-material/Mail';
 
 const Chat = () => {
    const dispatch = useDispatch();
@@ -44,10 +45,15 @@ const Chat = () => {
    return (
       <div className="chat-container">
          <div className="chat-header">
-            {selectedChannel ? selectedChannel.name : "Select a channel"}
-            <button className="add-member-button">
-               Add Member <AddIcon />
-            </button>
+            <div className="headerLeft">
+              <MailIcon />
+              {selectedChannel ? selectedChannel.name : "Select a channel"}
+            </div>
+            <div className="headerRight">
+              <button className="add-member-button">
+                <PeopleAltIcon />
+              </button>
+            </div>
          </div>
          <div className="chat-box">
             {messages.data &&
