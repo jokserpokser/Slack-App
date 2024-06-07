@@ -8,6 +8,7 @@ export default function Messages() {
    const [userList, setUserList] = useState([]);
    const [messages, setMessages] = useState([]);
    const [userListLoading, setUserListLoading] = useState(true);
+   const [filteredUsers, setFilteredUsers] = useState([]);
 
    const [isFocused, setIsFocused] = useState(false);
 
@@ -15,6 +16,7 @@ export default function Messages() {
    const [messageInput, setMessageInput] = useState("");
 
    const [fetchFlag, setFetchFlag] = useState(true);
+   const [filteredUsersFlag, setFilteredUsersFlag] = useState(false);
 
    const user = JSON.parse(localStorage.getItem("user"));
 
@@ -43,11 +45,22 @@ export default function Messages() {
                alert("Cannot Fetch Messages: Messages.jsx");
             } finally {
                setFetchFlag(true);
-               console.log(messages);
             }
          }
       }
 
+      async function fetchAllMessages() {
+         if (!filteredUsersFlag) {
+            try {
+               const responseArray = await UserService.fetchAllMessages(user);
+               setFilteredUsersFlag(true);
+               setFilteredUsers(responseArray);
+            } catch (error) {
+               console.log("FetchAllMessages function Failed");
+            }
+         }
+      }
+      fetchAllMessages();
       fetchMessages();
    });
 
@@ -70,6 +83,9 @@ export default function Messages() {
          await UserService.sendMessage(user, receiverId, messageInput);
          setMessageInput("");
          setFetchFlag(false);
+         if (!filteredUsers.includes(receiverId)) {
+            setFilteredUsersFlag(false);
+         }
       } catch (error) {
          alert("Message not sent");
       }
@@ -144,27 +160,31 @@ export default function Messages() {
 
                <div className="userListMessages">
                   <h4>Direct Messages</h4>
-                  {userListLoading && (
+                  {!filteredUsersFlag && (
                      <span className="loading">Loading...</span>
                   )}
-                  {userList
-                     .slice()
-                     .sort((a, b) => a.email.localeCompare(b.email))
-                     .map((person) => {
-                        const { email, id } = person;
-                        return (
-                           <button
-                              className="userItem"
-                              onClick={handleSelectUser}
-                              data-email={email}
-                              data-id={id}
-                              key={id}
-                           >
-                              <i className="fa-solid fa-message"></i>
-                              {email}
-                           </button>
-                        );
-                     })}
+                  {filteredUsersFlag &&
+                     userList
+                        .slice()
+                        .filter((indiv) => {
+                           return filteredUsers.includes(indiv.id);
+                        })
+                        .sort((a, b) => a.email.localeCompare(b.email))
+                        .map((person) => {
+                           const { email, id } = person;
+                           return (
+                              <button
+                                 className="userItem"
+                                 onClick={handleSelectUser}
+                                 data-email={email}
+                                 data-id={id}
+                                 key={id}
+                              >
+                                 <i className="fa-solid fa-message"></i>
+                                 {email}
+                              </button>
+                           );
+                        })}
                </div>
             </div>
          </div>

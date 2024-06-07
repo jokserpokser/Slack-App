@@ -28,11 +28,10 @@ export default function Users() {
 
    return (
       <div className="messages-container">
-         <div className="sidebar2-container">
-            <h1>Users</h1>
-            <div className="userList-container">
-               {userListLoading && <span className="loading">Loading...</span>}
-
+         <div className="userList-page">
+            {userListLoading && <span className="loading">Loading...</span>}
+            {!userListLoading && <h4>Users</h4>}
+            <div className="userListGrid">
                {!userListLoading &&
                   userList
                      .slice()
@@ -40,7 +39,7 @@ export default function Users() {
                      .map((person) => {
                         const { email, id } = person;
                         return (
-                           <p className="userItem" key={id}>
+                           <p className="userItemUsers" key={id}>
                               <i className="fa-solid fa-user"></i>
                               {email}
                            </p>

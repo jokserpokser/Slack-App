@@ -51,7 +51,7 @@ const UserService = {
             `${API_URL}/messages?receiver_id=${receiverId}&receiver_class=User`,
             { headers }
          );
-
+         console.log(response.data.data)
          return response.data.data;
       } catch (error) {
          alert(error.response.data.errors);
@@ -81,6 +81,46 @@ const UserService = {
          }
       } catch (error) {
          console.log("Error: Message not Sent from UserService");
+      }
+   },
+
+   fetchAllMessages: async function (user) {
+      const headers = {
+         "access-token": user.accessToken,
+         expiry: user.expiry,
+         client: user.client,
+         uid: user.uid,
+      };
+
+      try {
+         let responseArray = [];
+         let receiverId = 4980;
+         
+
+         while(true){
+            let response = await axios.get(
+               `${API_URL}/messages?receiver_id=${receiverId}&receiver_class=User`,
+               { headers }
+            );
+
+            if(response.data){
+               if(response.data.errors){
+                  break;
+               } else if (response.data.data.length > 0) {
+                  responseArray.push(receiverId);
+               }
+               
+            }
+            receiverId++;
+
+            await new Promise(resolve => setTimeout(resolve, 100)); 
+         }
+         
+         return responseArray;
+
+         
+      } catch (error) {
+         console.log(error.response.data.errors);
       }
    },
 };
