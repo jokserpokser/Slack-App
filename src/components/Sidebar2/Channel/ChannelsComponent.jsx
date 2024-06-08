@@ -52,10 +52,9 @@ function ChannelsComponent() {
 
         const result = await ChannelService.createChannel(user, channelName);
         if (result) {
-            console.log('Channel created successfully:', result);
             setChannelName('');
             handleClose();
-            setChannels([...channels, result]); // Update channels list with the new channel
+            setChannels([...channels, result]);
         } else {
             console.error('Failed to create channel');
         }
@@ -176,9 +175,12 @@ const ModalBox = styled(Box)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 300px;
     background-color: white;
     padding: 20px;
     box-shadow: 24;
-    p: 4;
+    background-color: rgb(15, 15, 15);
+    color: whitesmoke;
+   
+
 `;

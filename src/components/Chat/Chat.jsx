@@ -5,6 +5,7 @@ import "./Chat.css";
 import ChatService from "../../services/ChatService";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import MailIcon from '@mui/icons-material/Mail';
+import AddMember from './AddMember';
 
 const Chat = () => {
    const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const Chat = () => {
    const user = JSON.parse(localStorage.getItem("user"));
    const [newMessage, setNewMessage] = useState("");
    const [chatFlag, setChatFlag] = useState(false);
+   const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
 
    useEffect(() => {
       const getMessages = () => {
@@ -25,8 +27,6 @@ const Chat = () => {
          getMessages();
          setChatFlag(true);
       }
-
-      
    }, [chatFlag, user, selectedChannel, dispatch]);
 
    const handleSendMessage = async () => {
@@ -42,6 +42,10 @@ const Chat = () => {
       }
    };
 
+   const handleToggleAddMember = () => {
+      setIsAddMemberOpen(!isAddMemberOpen);
+   };
+
    return (
       <div className="chat-container">
          <div className="chat-header">
@@ -50,7 +54,7 @@ const Chat = () => {
               {selectedChannel ? selectedChannel.name : "Select a channel"}
             </div>
             <div className="headerRight">
-              <button className="add-member-button">
+              <button className="add-member-button" onClick={handleToggleAddMember}>
                 <PeopleAltIcon />
               </button>
             </div>
@@ -58,9 +62,12 @@ const Chat = () => {
          <div className="chat-box">
             {messages.data &&
                messages.data.map((msg, index) => (
-                  <div key={index} className="chat-message">
-                     {msg.body}
-                  </div>
+                     <div key={index} className={user.uid === msg.sender.uid ? "mapMessages-user-container" : "mapMessages-receiver-container"}>
+                         <span className="currentUser">
+                           {msg.sender.uid}
+                         </span>
+                        {msg.body}
+                     </div>
                ))}
          </div>
          <div className="chat-input">
@@ -72,6 +79,9 @@ const Chat = () => {
             />
             <button onClick={handleSendMessage}>Send</button>
          </div>
+         {isAddMemberOpen && (
+            <AddMember channelId={selectedChannel.id} onClose={handleToggleAddMember} />
+         )}
       </div>
    );
 };
