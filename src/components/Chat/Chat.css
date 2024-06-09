@@ -20,7 +20,7 @@
     background-color: rgb(15, 15, 15);
     margin-bottom: 10px;
     color: white;
-    font-size: 15px;
+    font-size: 17px;
     text-align: left;
 }
 
@@ -29,6 +29,7 @@
     font-weight: 700;
     padding-top: 5px;
 }
+
   
 .chat-input {
     display: flex;
@@ -83,15 +84,29 @@
     background-color: rgb(5, 5, 5);
 }
 
+.headerRight {
+    display: flex;
+    justify-content: space-between;
+}
+
 .add-member-button {
-    padding: 10px 20px;
+    padding: 5px 7px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    background-color: rgb(5, 5, 5);
+    color: white;
 }
 
+.userlist-button {
+    padding: 5px 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: rgb(5, 5, 5);
+    color: white;
+}
 
-.mapMessages-user-container {
-    text-align: left;
-    padding-left: 10px;
+.timestamp {
+    color: rgb(68, 68, 68);
 }

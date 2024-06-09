@@ -6,6 +6,9 @@ import ChatService from "../../services/ChatService";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import MailIcon from '@mui/icons-material/Mail';
 import AddMember from './AddMember';
+import UserList from './UserList';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const Chat = () => {
    const dispatch = useDispatch();
@@ -14,6 +17,7 @@ const Chat = () => {
    const [newMessage, setNewMessage] = useState("");
    const [chatFlag, setChatFlag] = useState(false);
    const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
+   const [listMemberOpen, setlistMemberOpen] = useState(false);
 
    useEffect(() => {
       const getMessages = () => {
@@ -46,19 +50,35 @@ const Chat = () => {
       setIsAddMemberOpen(!isAddMemberOpen);
    };
 
+   const handleToggleListMembers = () => {
+      setlistMemberOpen(!listMemberOpen);
+
+   };
+
+   const formatTimestamp = (timestamp) => {
+      const date = new Date(timestamp);
+      return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+   };
+
    return (
       <div className="chat-container">
-         <div className="chat-header">
-            <div className="headerLeft">
-              <MailIcon />
-              {selectedChannel ? selectedChannel.name : "Select a channel"}
+         {selectedChannel && (
+               <>
+            <div className="chat-header">
+               <div className="headerLeft">
+                  <MailIcon />
+                  {selectedChannel ? selectedChannel.name : "Select a channel"}
             </div>
             <div className="headerRight">
-              <button className="add-member-button" onClick={handleToggleAddMember}>
-                <PeopleAltIcon />
-              </button>
+                  <button className="add-member-button" onClick={handleToggleAddMember}>
+                     <AddIcon />
+                  </button>
+            
+                  <button className="userlist-button" onClick={handleToggleListMembers}>
+                     <PeopleAltIcon />
+                  </button>
             </div>
-         </div>
+             </div>
          <div className="chat-box">
             {messages.data &&
                messages.data.map((msg, index) => (
@@ -67,6 +87,7 @@ const Chat = () => {
                            {msg.sender.uid}
                          </span>
                         {msg.body}
+                        <span className="timestamp">{formatTimestamp(msg["created_at"])}</span>
                      </div>
                ))}
          </div>
@@ -79,9 +100,15 @@ const Chat = () => {
             />
             <button onClick={handleSendMessage}>Send</button>
          </div>
+         {listMemberOpen && (
+            <UserList channelId={selectedChannel.id} onClose={handleToggleListMembers} />
+         )}
          {isAddMemberOpen && (
             <AddMember channelId={selectedChannel.id} onClose={handleToggleAddMember} />
          )}
+               </>
+         )}
+         
       </div>
    );
 };

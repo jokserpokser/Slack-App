@@ -3,25 +3,16 @@ import AddMemberService from '../../services/AddMemberService';
 import './AddMember.css';
 
 const AddMember = ({ channelId, onClose }) => {
-  const [userId, setUserId] = useState('');
+  const [newUserId, setNewUserId] = useState('');
   const user = JSON.parse(localStorage.getItem('user'));
 
   const handleAddMember = async () => {
     try {
-
-      console.log("User:", user);
-      console.log("UserId (input)", userId);
-      console.log("ChannelId", channelId);
-
-      const response = await AddMemberService.addMember(user, channelId);
-      console.log("Response",response);
-      if (response) {
-        alert('Member added successfully');
-        onClose();
-      } 
+      
+      await AddMemberService.addMember(user, channelId, newUserId);
+       onClose();
     } catch (error) {
       alert('Error adding member');
-      console.log("Error details", error);
     }
   };
 
@@ -29,10 +20,10 @@ const AddMember = ({ channelId, onClose }) => {
     <div className="add-member-modal">
       <div className="modal-content">
         <h2>Add Member</h2>
-        <input
+        <input className='add-member-input'
           type="text"
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
+          value={newUserId}
+          onChange={(e) => setNewUserId(e.target.value)}
           placeholder="Enter user ID"
         />
         <div className="modal-buttons">

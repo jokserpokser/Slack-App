@@ -1,7 +1,6 @@
 import { FiberManualRecord } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import CreateIcon from '@mui/icons-material/Create';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import ChannelOptions from './ChannelOptions';
@@ -76,14 +75,14 @@ function ChannelsComponent() {
             <ChannelHeader>
                 {status === "true" && (
                     <ChannelInfo>
-                        <h2>ADVENT CHILDREN</h2>
+                        <h2>AVION SCHOOL</h2>
                         <h3>
                             <FiberManualRecord />
                             {uid} #{id}
                         </h3>
                     </ChannelInfo>
                 )}
-                <CreateIcon />
+                
             </ChannelHeader>
             <hr />
             <ChannelOptions Icon={ExpandMoreIcon} title="Channels" />

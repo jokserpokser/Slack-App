@@ -42,10 +42,9 @@ const ChatService = {
             const response = await axios.get(`${API_URL}/messages?receiver_id=${channelId}&receiver_class=${body.receiver_class}`, { headers });
             return response.data;
         } catch (error) {
-            // if(error.response.data.errors){
-            //     alert(error.response.data.errors);
-            // }
-            alert("Failed to fetch messages")
+            if(error.response.data.errors){
+                alert(error.response.data.errors);
+            }
         }
         
     }

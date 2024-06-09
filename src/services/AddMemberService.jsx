@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL } from "../constants/Constants";
 
 const AddMemberService = {
-  addMember: async (user, channelId) => {
+  addMember: async (user, channelId, newUserId) => {
     try {
       const headers = {
         "access-token": user.accessToken,
@@ -13,11 +13,16 @@ const AddMemberService = {
 
       const body = {
         id: channelId,
-        member_id: user.id
+        member_id: newUserId
       };
 
       const response = await axios.post(`${API_URL}/channel/add_member`, body,  { headers });
-      return response.data;
+      if (response.data.errors) {
+        alert(response.data.errors);
+      } else {
+        alert('Member added successfully');
+      }
+      
     } catch (error) {
         if(error.response.data.errors){
             alert(error.response.data.errors);

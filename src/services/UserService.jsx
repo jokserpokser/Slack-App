@@ -123,6 +123,26 @@ const UserService = {
          console.log(error.response.data.errors);
       }
    },
+
+   getUsersInChannel: async function (user, channelId) {
+      try {
+        const headers = {
+          "access-token": user.accessToken,
+          expiry: user.expiry,
+          client: user.client,
+          uid: user.uid,
+        };
+  
+        const response = await axios.get(`${API_URL}/channels/${channelId}`, { headers });
+        const channelMembers = response.data.data["channel_members"]
+        console.log(channelMembers);
+        return channelMembers;
+      } catch (error) {
+        if (error.response.data.errors) {
+          alert(error.response.data.errors);
+        }
+      }
+    }
 };
 
 export default UserService;

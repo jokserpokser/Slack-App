@@ -1,6 +1,6 @@
 
 .add-member-modal {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -12,7 +12,7 @@
   }
   
   .modal-content {
-    background-color: rgb(5, 5, 5);
+    background-color: rgb(43, 20, 20);
     padding: 20px;
     border-radius: 8px;
     width: 350px;
@@ -27,7 +27,8 @@
     justify-content: space-between;
   }
   
-  .error-message {
-    color: red;
-  }
   
+  .add-member-input[type="text"] {
+    width: 18rem;
+    background-color: white !important;
+  }
