@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Sidebar2.css";
 import UserService from "../../services/UserService";
 
@@ -19,6 +19,8 @@ export default function Messages() {
    const [filteredUsersFlag, setFilteredUsersFlag] = useState(false);
 
    const user = JSON.parse(localStorage.getItem("user"));
+
+   const chatContainerRef = useRef(null);
 
    useEffect(() => {
       async function fetchUsers() {
@@ -60,9 +62,16 @@ export default function Messages() {
             }
          }
       }
-      fetchAllMessages();
+
+      if (chatContainerRef.current) {
+         chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+      }
+
+      // fetchAllMessages();
       fetchMessages();
-   });
+   },[fetchFlag, filteredUsersFlag, receiverId, user, userList.length, messages]);
+
+
 
    const handleSearchUser = (event) => {
       setSearchedUser(event.target.value);
@@ -83,9 +92,9 @@ export default function Messages() {
          await UserService.sendMessage(user, receiverId, messageInput);
          setMessageInput("");
          setFetchFlag(false);
-         if (!filteredUsers.includes(receiverId)) {
-            setFilteredUsersFlag(false);
-         }
+         // if (!filteredUsers.includes(receiverId)) {
+         //    setFilteredUsersFlag(false);
+         // }
       } catch (error) {
          alert("Message not sent");
       }
@@ -160,14 +169,16 @@ export default function Messages() {
 
                <div className="userListMessages">
                   <h4>Direct Messages</h4>
-                  {!filteredUsersFlag && (
+                  {userListLoading && (
                      <span className="loading">Loading...</span>
                   )}
-                  {filteredUsersFlag &&
+                  {/* {filteredUsersFlag &&} */}
+                  {
                      userList
                         .slice()
                         .filter((indiv) => {
-                           return filteredUsers.includes(indiv.id);
+                           return indiv
+                           // return filteredUsers.includes(indiv.id);
                         })
                         .sort((a, b) => a.email.localeCompare(b.email))
                         .map((person) => {
@@ -191,11 +202,10 @@ export default function Messages() {
          <div className="chatBox-container">
             {selectedUser && (
                <>
-                  <div className="chatMessages-container">
+                  <div className="chatMessages-container" ref={chatContainerRef}>
                      <h6>{selectedUser}</h6>
-                     {!fetchFlag && <p className="loading">Loading Messages</p>}
-                     {fetchFlag &&
-                        messages &&
+                     {!messages && <p className="loading">Loading Messages</p>}
+                     {messages &&
                         messages.map((msgs, index) => {
                            return (
                               <div
