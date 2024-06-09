@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { selectChannel, fetchMessages } from '../../../redux/chatSlice';
+import Avatar, { genConfig } from 'react-nice-avatar'
 
 function ChannelsComponent() {
     const status = localStorage.getItem("isLoggedIn");
@@ -22,6 +23,7 @@ function ChannelsComponent() {
     const [channels, setChannels] = useState([]);
     const [channelFlag, setChannelFlag] = useState(true);
     const dispatch = useDispatch();
+    const config = genConfig(); 
 
     useEffect(() => {
         const fetchChannels = async () => {
@@ -77,9 +79,11 @@ function ChannelsComponent() {
                     <ChannelInfo>
                         <h2>AVION SCHOOL</h2>
                         <h3>
+                        <Avatar style={{ width: '3rem', height: '3rem' }} {...config} />
                             <FiberManualRecord />
                             {uid} #{id}
                         </h3>
+                        
                     </ChannelInfo>
                 )}
                 
@@ -156,8 +160,8 @@ const ChannelInfo = styled.div`
 
     > h3 {
         display: flex;
-        font-size: 13px;
-        font-weight: 400;
+        font-size: 14px;
+        font-weight: 600;
         align-items: center;
     }
 

@@ -10,6 +10,8 @@ import UserList from './UserList';
 import AddIcon from '@mui/icons-material/Add';
 
 
+
+
 const Chat = () => {
    const dispatch = useDispatch();
    const { selectedChannel, messages } = useSelector((state) => state.chat);
@@ -18,6 +20,7 @@ const Chat = () => {
    const [chatFlag, setChatFlag] = useState(false);
    const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
    const [listMemberOpen, setlistMemberOpen] = useState(false);
+   
 
    useEffect(() => {
       const getMessages = () => {
@@ -84,7 +87,7 @@ const Chat = () => {
                messages.data.map((msg, index) => (
                      <div key={index} className={user.uid === msg.sender.uid ? "mapMessages-user-container" : "mapMessages-receiver-container"}>
                          <span className="currentUser">
-                           {msg.sender.uid}
+                            {msg.sender.uid}
                          </span>
                         {msg.body}
                         <span className="timestamp">{formatTimestamp(msg["created_at"])}</span>
