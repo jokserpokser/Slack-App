@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Sidebar2.css";
 import UserService from "../../services/UserService";
+import { FiberManualRecord } from '@mui/icons-material';
 
 export default function Messages() {
    const [searchedUser, setSearchedUser] = useState("");
@@ -64,14 +65,20 @@ export default function Messages() {
       }
 
       if (chatContainerRef.current) {
-         chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+         chatContainerRef.current.scrollTop =
+            chatContainerRef.current.scrollHeight;
       }
 
       // fetchAllMessages();
       fetchMessages();
-   },[fetchFlag, filteredUsersFlag, receiverId, user, userList.length, messages]);
-
-
+   }, [
+      fetchFlag,
+      filteredUsersFlag,
+      receiverId,
+      user,
+      userList.length,
+      messages,
+   ]);
 
    const handleSearchUser = (event) => {
       setSearchedUser(event.target.value);
@@ -100,12 +107,23 @@ export default function Messages() {
       }
    };
 
+   const formatTimestamp = (timestamp) => {
+      const date = new Date(timestamp);
+      return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+   };
+
    return (
       <div className="messages-container">
          <div className="sidebar2-container">
             {/* <MessageComponent /> */}
             <h1>Messages</h1>
             <div className="userList-container">
+               <span className="email-header">
+               
+                  <h3 className="bold">{user.uid} </h3>
+                  <p># {user.id} <FiberManualRecord style={{color:"green", fontSize: "0.8rem"}} /> </p>
+               </span>
+
                <label htmlFor="searchUser">Search User</label>
                <input
                   type="text"
@@ -173,36 +191,38 @@ export default function Messages() {
                      <span className="loading">Loading...</span>
                   )}
                   {/* {filteredUsersFlag &&} */}
-                  {
-                     userList
-                        .slice()
-                        .filter((indiv) => {
-                           return indiv
-                           // return filteredUsers.includes(indiv.id);
-                        })
-                        .sort((a, b) => a.email.localeCompare(b.email))
-                        .map((person) => {
-                           const { email, id } = person;
-                           return (
-                              <button
-                                 className="userItem"
-                                 onClick={handleSelectUser}
-                                 data-email={email}
-                                 data-id={id}
-                                 key={id}
-                              >
-                                 <i className="fa-solid fa-message"></i>
-                                 {email}
-                              </button>
-                           );
-                        })}
+                  {userList
+                     .slice()
+                     .filter((indiv) => {
+                        return indiv;
+                        // return filteredUsers.includes(indiv.id);
+                     })
+                     .sort((a, b) => a.email.localeCompare(b.email))
+                     .map((person) => {
+                        const { email, id } = person;
+                        return (
+                           <button
+                              className="userItem"
+                              onClick={handleSelectUser}
+                              data-email={email}
+                              data-id={id}
+                              key={id}
+                           >
+                              <i className="fa-solid fa-message"></i>
+                              {email}
+                           </button>
+                        );
+                     })}
                </div>
             </div>
          </div>
          <div className="chatBox-container">
             {selectedUser && (
                <>
-                  <div className="chatMessages-container" ref={chatContainerRef}>
+                  <div
+                     className="chatMessages-container"
+                     ref={chatContainerRef}
+                  >
                      <h6>{selectedUser}</h6>
                      {!messages && <p className="loading">Loading Messages</p>}
                      {messages &&
@@ -230,6 +250,9 @@ export default function Messages() {
                                        {msgs.body}
                                     </span>
                                  </p>
+                                 <span className="time-stamp">
+                                    {formatTimestamp(msgs["created_at"])}
+                                 </span>
                               </div>
                            );
                         })}

@@ -32,7 +32,7 @@ input[type="submit"]:hover {
    z-index: -900;
 }
 
-.userList-page h4{
+.userList-page h4 {
    color: whitesmoke;
    padding-right: 5rem;
 }
@@ -42,10 +42,9 @@ input[type="submit"]:hover {
    grid-template-columns: 1fr 1fr 1fr;
    padding-bottom: 7rem;
    padding-right: 5rem;
-   
 }
 
-.userListGrid i{
+.userListGrid i {
    margin-right: 1rem;
 }
 
@@ -166,7 +165,7 @@ input[type="submit"]:hover {
    position: absolute;
    background-color: rgb(55, 55, 55);
    margin-top: 0;
-   top: 10rem;
+   top: 17.2rem;
    width: 20rem;
    padding: 0.5rem;
    font-size: 1.2rem;
@@ -199,6 +198,8 @@ input[type="submit"]:hover {
    padding: 1rem;
    font-size: 1rem;
    text-align: left;
+   margin-right: 7rem;
+   color: whitesmoke;
 }
 
 .userList-container p {
@@ -208,6 +209,17 @@ input[type="submit"]:hover {
 .userList-container i {
    padding-right: 0.7rem;
 }
+
+.email-header{
+   margin-bottom: 2rem;
+   font-size: 1rem;
+   border: 1px #6f3b72 solid;
+   width: 100%;
+   text-align: left;
+   padding-left: 2rem;
+   padding-block: 1rem;
+}
+
 
 .userItem {
    padding: 1rem;
@@ -269,7 +281,7 @@ input[type="submit"]:hover {
 
 .currentUser {
    font-size: 0.8rem;
-   margin-top: 1rem;
+   margin-top: 0.5rem;
 }
 
 .mapMessages-user-container {
@@ -278,6 +290,7 @@ input[type="submit"]:hover {
    justify-content: center;
    text-align: right !important;
    padding-right: 1rem;
+   margin-top: 1.5rem;
 }
 
 .mapMessages-receiver-container {
@@ -286,6 +299,7 @@ input[type="submit"]:hover {
    justify-content: center;
    text-align: left;
    padding-left: 1rem;
+   margin-top: 1.5rem;
 }
 
 .messageUser {
@@ -306,6 +320,12 @@ input[type="submit"]:hover {
    width: auto;
    max-width: 10rem;
    font-size: 1rem;
+}
+
+.time-stamp {
+   color: rgb(53, 53, 53);
+   font-size: 1rem;
+   margin-top: 0.3rem;
 }
 
 .userListMessages .userItem {
