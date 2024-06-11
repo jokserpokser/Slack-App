@@ -10,8 +10,6 @@ import UserList from './UserList';
 import AddIcon from '@mui/icons-material/Add';
 
 
-
-
 const Chat = () => {
    const dispatch = useDispatch();
    const { selectedChannel, messages } = useSelector((state) => state.chat);
@@ -66,12 +64,12 @@ const Chat = () => {
    return (
       <div className="chat-container">
          {selectedChannel && (
-               <>
+          <>
             <div className="chat-header">
                <div className="headerLeft">
                   <MailIcon />
                   {selectedChannel ? selectedChannel.name : "Select a channel"}
-            </div>
+               </div>
             <div className="headerRight">
                   <button className="add-member-button" onClick={handleToggleAddMember}>
                      <AddIcon />
@@ -89,7 +87,7 @@ const Chat = () => {
                          <span className="currentUser">
                             {msg.sender.uid}
                          </span>
-                        {msg.body}
+                        <p className="message-body-content">{msg.body}</p>
                         <span className="timestamp">{formatTimestamp(msg["created_at"])}</span>
                      </div>
                ))}
@@ -109,7 +107,7 @@ const Chat = () => {
          {isAddMemberOpen && (
             <AddMember channelId={selectedChannel.id} onClose={handleToggleAddMember} />
          )}
-               </>
+         </>
          )}
          
       </div>

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Chat /> snapshot test for Chat 1`] = `
+<div
+  className="chat-container"
+/>
+`;
+
+exports[`snapshot test for Chat 1`] = `
+<div
+  className="chat-container"
+/>
+`;

@@ -8,10 +8,9 @@
     "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
     "@reduxjs/toolkit": "^2.2.5",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
+    "axios-mock-adapter": "^1.22.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-nice-avatar": "^1.5.0",
@@ -20,6 +19,8 @@
     "react-router-dom": "^6.23.1",
     "react-scripts": "5.0.1",
     "react-simple-timestamp-to-date": "^1.0.3",
+    "react-test-renderer": "^18.3.1",
+    "redux-thunk": "^3.1.0",
     "semantic-ui-react": "^2.1.5",
     "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
@@ -27,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,5 +51,18 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^16.0.0",
+    "babel-jest": "^29.7.0",
+    "redux-mock-store": "^1.5.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }

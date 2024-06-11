@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot for login 1`] = `
+<div
+  className="main-container"
+>
+  <img
+    alt="Slack"
+    className="logo-img"
+    src="slack-logo.png"
+  />
+  <div
+    className="login-form"
+  >
+    <h1>
+      Sign in to Slack
+    </h1>
+    <p
+      className="header2"
+    >
+      We suggest using the email address you use at work.
+    </p>
+    <form
+      onSubmit={[Function]}
+    >
+      <label>
+        Email
+      </label>
+      <br />
+      <input
+        onChange={[Function]}
+        required={true}
+        type="email"
+      />
+      <br />
+      <label>
+        Password
+      </label>
+      <br />
+      <input
+        onChange={[Function]}
+        required={true}
+        type="password"
+      />
+      <br />
+      <input
+        className="login-btn"
+        type="submit"
+        value="Login"
+      />
+    </form>
+    <button
+      className="changeDisplayLogin-btn"
+      onClick={[Function]}
+    >
+      Create an Account
+    </button>
+  </div>
+</div>
+`;

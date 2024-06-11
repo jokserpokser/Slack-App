@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test for userlist 1`] = `
+<div
+  className="user-list-modal"
+>
+  <div
+    className="modal-content"
+  >
+    <h2>
+      Channel Users
+    </h2>
+    <ul />
+    <button>
+      Close
+    </button>
+  </div>
+</div>
+`;

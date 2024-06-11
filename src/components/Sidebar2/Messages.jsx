@@ -20,7 +20,6 @@ export default function Messages() {
    const [filteredUsersFlag, setFilteredUsersFlag] = useState(false);
 
    const user = JSON.parse(localStorage.getItem("user"));
-
    const chatContainerRef = useRef(null);
 
    useEffect(() => {
@@ -119,9 +118,8 @@ export default function Messages() {
             <h1>Messages</h1>
             <div className="userList-container">
                <span className="email-header">
-               
-                  <h3 className="bold">{user.uid} </h3>
-                  <p># {user.id} <FiberManualRecord style={{color:"green", fontSize: "0.8rem"}} /> </p>
+                     <h3 className="bold">{user.uid}</h3>
+                     <p>#{user.id} <FiberManualRecord style={{color:"green", fontSize: "0.8rem"}} /> </p>
                </span>
 
                <label htmlFor="searchUser">Search User</label>

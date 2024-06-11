@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/slack-logo.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios';
 import { API_URL } from "../../constants/Constants";
 
 export default function Login({ setDisplay }) {
@@ -63,7 +63,7 @@ export default function Login({ setDisplay }) {
                We suggest using the email address you use at work.
             </p>
             <form onSubmit={handleLogin}>
-               <label htmlFor="email">Email</label>
+               <label>Email</label>
                <br></br>
                <input
                   type="email"
@@ -71,7 +71,7 @@ export default function Login({ setDisplay }) {
                   required
                />
                <br></br>
-               <label htmlFor="password">Password</label>
+               <label>Password</label>
                <br></br>
                <input
                   type="password"
